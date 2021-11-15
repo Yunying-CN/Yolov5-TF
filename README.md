@@ -36,7 +36,7 @@ python3 train.py  python3 train.py --num_classes 20 --epochs 30 --yaml_dir ./mod
 
 
 ## OpenVINO部署
-1. 模型转换
+1. 模型转换                                        
 训练得到的模型原始存储格式为.pb格式，为了实现OpenVINO部署，再转化为OpenVINO需要的.xml和.bin的存储格式
 ```
 python mo_tf.py --saved_model_dir <.pb文件夹路径> --input_shape [1,640,640,3] --output_dir <输出文件夹路径> --data_type FP32
@@ -47,7 +47,7 @@ python mo_tf.py --saved_model_dir <.pb文件夹路径> --input_shape [1,640,640,
 - output_dir 为转换后的输出路径           
 - data_type 为设置数据格式       
 
-2. 推理部署
+2. 推理部署                            
 通过执行main.cpp工程可以实现模型部署，其中在部署中包括几部分：      
 - 推理引擎的初始化
 - 数据准备和输入
