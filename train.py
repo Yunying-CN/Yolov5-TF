@@ -12,6 +12,7 @@ from data.dataset import *
 
 flags.DEFINE_string('dataset', './data/voc2012_train.tfrecord', 'path to dataset')
 flags.DEFINE_string('val_dataset', './data/voc2012_val.tfrecord', 'path to validation dataset')
+flags.DEFINE_string('saved_dir', './weights', 'path to trained model')
 flags.DEFINE_string('yaml_dir', './models/yolov5s.yaml', 'path to yaml file')
 flags.DEFINE_string('classes', './data/voc2012.names', 'path to classes file')
 flags.DEFINE_integer('size', 640, 'image size')
@@ -62,7 +63,9 @@ def main(_argv):
             optimizer.apply_gradients(zip(grads, Yolo.trainable_variables))
             logging.info("{}_train_{}, {}, {}".format(epoch, step, total_loss.numpy(),
                 list(map(lambda x: np.sum(x.numpy()), pred_loss))))
-            tf.saved_model.save(Yolo, './weights/')
+    if not os.path.exists(FLAGS.saved_dir):
+        os.makedirs(FLAGS.saved_dir) 
+    tf.saved_model.save(Yolo, FLAGS.saved_dir)
 
 
 if __name__=='__main__':
