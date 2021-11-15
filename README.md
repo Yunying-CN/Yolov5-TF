@@ -54,6 +54,6 @@ python mo_tf.py --saved_model_dir <.pb文件夹路径> --input_shape [1,640,640,
 - 执行推理
 - NMS及阈值处理
 
-
-
-
+## 检测结果
+![Alt text](https://github.com/Yunying-CN/Yolov5-TF/blob/main/img/test.jpg "Input")
+![Alt text](https://github.com/Yunying-CN/Yolov5-TF/blob/main/img/output.jpg "Onput")
